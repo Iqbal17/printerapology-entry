@@ -78,6 +78,10 @@ def main() -> None:
     path = os.path.join(out_dir, "entry.txt")
     with open(path, "w", encoding="utf-8") as f:
         f.write(LINE)
+    # Read back and confirm the file holds exactly the chosen line.
+    with open(path, "r", encoding="utf-8") as f:
+        if f.read() != LINE:
+            raise ValueError("entry.txt does not match the chosen line")
 
 
 if __name__ == "__main__":
